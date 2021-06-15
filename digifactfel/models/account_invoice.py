@@ -250,7 +250,7 @@ class AccountMove(models.Model):
                     logging.warn(precio_unitario)
                     taxes = tax_ids.compute_all(precio_unitario-descuento, currency, linea.quantity, linea.product_id, linea.invoice_id.partner_id)
 
-                    if len(linea.tax_ids) > 0:
+                    if len(linea.invoice_line_tax_ids) > 0:
                         # impuestos
                         TagImpuestos = etree.SubElement(TagItem,DTE_NS+"Impuestos",{})
                         for impuesto in taxes['taxes']:
